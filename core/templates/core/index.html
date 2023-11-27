@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <a href="{% url 'socios:socios-list' %}" class="btn btn-info col-5 p-3 mx-1 text-white shadow"><i class="bi bi-eye"></i> Ver Socios</a>
+    <a href="{% url 'socios:socios-create' %}" class="btn btn-info col-5 p-3 mx-1 text-white shadow"><i class="bi bi-person-plus"></i> Agregar Socio</a>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6 shadow mt-4 text-center p-4">
+      <img src="{% static 'core/img/avatar.png'%}" width="100">
+      <p>Nombre: Graciany Baeza Jara</p>
+      <p>Correo: graciany.baeza@inacapmail.cl</p>
+      <p>Enlace repositorio: <a href="">Prueba 2 back-end</a></p>
+    </div>
+  </div>
+</div>
+{% endblock %}
