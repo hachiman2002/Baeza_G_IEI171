@@ -2,7 +2,7 @@ from .models import Socios
 from django import forms
 
 class SociosForm(forms.ModelForm):
-    ESTADOS = [('activo', 'ACTIVO'), ('inactivo', 'INACTIVO'), ('bloqueado', 'BLOQUEADO')]
+    ESTADOS = [('vigente', 'VIGENTE'), ('suspendido', 'SUSPENDIDO'), ('retirado', 'RETIRADO')]
     TIPO_SEXO = [('hombre', 'HOMBRE'), ('mujer', 'MUJER'), ('otro', 'OTRO')]
 
     nombreSocio = forms.CharField(
@@ -27,7 +27,9 @@ class SociosForm(forms.ModelForm):
         cleaned_data = super().clean()
         nombre_socio = cleaned_data.get('nombreSocio')
 
-        if nombre_socio is None or len(nombre_socio) >= 80:
+        if nombre_socio is None:
+            pass
+        elif len(nombre_socio) >= 80:
             raise forms.ValidationError("El nombre no puede pasar los 80 caracteres")
-
+        
         return cleaned_data
