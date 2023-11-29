@@ -27,7 +27,7 @@ class SociosForm(forms.ModelForm):
         cleaned_data = super().clean()
         nombre_socio = cleaned_data.get('nombreSocio')
 
-        if len(nombre_socio) >= 80:
+        if nombre_socio is None or len(nombre_socio) >= 80:
             raise forms.ValidationError("El nombre no puede pasar los 80 caracteres")
 
         return cleaned_data
